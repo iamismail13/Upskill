@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import { Router, Switch, Route, BrowserRouter } from "react-router-dom";
+import History from "./History";
+//import { Provider } from "react-redux";
+
+import Signin from './Components/Signin';
+import Signup from './Components/Signup';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Vanakkam <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //history={history}
+      <BrowserRouter>
+          <Router>
+            <div className="Content">
+              <Switch>
+              <Route exact path="/" component={Signin}>
+                  {/* <Provider store={store}> */}
+                    <Signin />
+                  {/* </Provider> */}
+                </Route>
+
+                <Route path="/Signup" component={Signup}>
+                  <Signup />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+      </BrowserRouter>
+    
   );
 }
 
